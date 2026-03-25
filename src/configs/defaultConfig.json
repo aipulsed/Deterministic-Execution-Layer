@@ -1,0 +1,40 @@
+{
+  "app": {
+    "name": "Deterministic Execution Layer",
+    "version": "1.0.0",
+    "port": 3000,
+    "env": "development"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "name": "del",
+    "poolSize": 10,
+    "ssl": false
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "db": 0
+  },
+  "queue": {
+    "maxRetries": 3,
+    "retryDelay": 5000,
+    "deadLetterTtl": 86400
+  },
+  "storage": {
+    "provider": "local",
+    "localPath": "./uploads",
+    "maxFileSize": 104857600
+  },
+  "email": {
+    "host": "smtp.example.com",
+    "port": 587,
+    "secure": false,
+    "from": "noreply@example.com"
+  },
+  "logging": {
+    "level": "info",
+    "format": "json"
+  }
+}

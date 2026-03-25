@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice {{invoiceNumber}}</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 30px auto; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .header { background: #1a73e8; color: #fff; padding: 24px 32px; }
+    .header h1 { margin: 0; font-size: 24px; }
+    .body { padding: 32px; }
+    .invoice-meta { display: flex; justify-content: space-between; margin-bottom: 24px; color: #555; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    th { background: #f0f0f0; text-align: left; padding: 10px 12px; font-size: 13px; color: #333; }
+    td { padding: 10px 12px; border-bottom: 1px solid #eee; font-size: 14px; }
+    .totals { text-align: right; }
+    .totals td { border: none; padding: 4px 12px; }
+    .total-row td { font-weight: bold; font-size: 16px; color: #1a73e8; }
+    .footer { background: #f8f8f8; padding: 16px 32px; font-size: 12px; color: #888; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Invoice {{invoiceNumber}}</h1>
+      <p style="margin:4px 0 0">{{appName}}</p>
+    </div>
+    <div class="body">
+      <div class="invoice-meta">
+        <div><strong>Billed To:</strong><br>{{customerName}}<br>{{customerEmail}}</div>
+        <div style="text-align:right"><strong>Invoice Date:</strong><br>{{issuedAt}}<br><strong>Due Date:</strong><br>{{dueAt}}</div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Amount</th></tr>
+        </thead>
+        <tbody>
+          {{lineItems}}
+        </tbody>
+      </table>
+      <table class="totals">
+        <tr><td>Subtotal</td><td>{{currency}} {{subtotal}}</td></tr>
+        <tr><td>Tax ({{taxRate}}%)</td><td>{{currency}} {{taxAmount}}</td></tr>
+        <tr class="total-row"><td>Total Due</td><td>{{currency}} {{total}}</td></tr>
+      </table>
+      {{#if notes}}<p><strong>Notes:</strong> {{notes}}</p>{{/if}}
+    </div>
+    <div class="footer">This is an automated invoice from {{appName}}. Please do not reply to this email.</div>
+  </div>
+</body>
+</html>
