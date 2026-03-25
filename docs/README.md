@@ -1,8 +1,3 @@
-# Documentation for Deterministic Execution Layer
-
-This documentation provides a comprehensive overview of the Deterministic Execution Layer project, encompassing its architecture, principles, governance, tools, services, and more. It aims to help developers, stakeholders, and users to understand the project thoroughly and follow best practices.
----
-
 # Deterministic Execution Layer Documentation
 
 Welcome to the Deterministic Execution Layer (DEL) documentation. This set of documents provides a comprehensive overview of the architecture, guides, and references for using and contributing to the DEL.
