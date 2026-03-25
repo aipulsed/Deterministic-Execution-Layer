@@ -171,7 +171,7 @@ export function getJobs(): ScheduledJob[] {
  * Stops all scheduled jobs.
  */
 export function stopAll(): void {
-  for (const task of cronInstances.values()) task.destroy();
+  for (const task of cronInstances.values()) task.stop();
   cronInstances.clear();
   logger.info('All scheduled jobs stopped');
 }

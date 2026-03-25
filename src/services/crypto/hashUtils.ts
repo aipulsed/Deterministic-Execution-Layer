@@ -5,6 +5,7 @@
  */
 
 import * as crypto from 'crypto';
+import type { BinaryToTextEncoding } from 'crypto';
 import bcrypt from 'bcrypt';
 
 const BCRYPT_ROUNDS = 12;
@@ -35,7 +36,7 @@ export async function verifyPassword(password: string, hash: string): Promise<bo
  * @param encoding - Output encoding (default: 'hex')
  * @returns Hash string
  */
-export function sha256(data: string | Buffer, encoding: BufferEncoding = 'hex'): string {
+export function sha256(data: string | Buffer, encoding: BinaryToTextEncoding = 'hex'): string {
   return crypto.createHash('sha256').update(data).digest(encoding);
 }
 
@@ -45,7 +46,7 @@ export function sha256(data: string | Buffer, encoding: BufferEncoding = 'hex'):
  * @param encoding - Output encoding
  * @returns Hash string
  */
-export function sha512(data: string | Buffer, encoding: BufferEncoding = 'hex'): string {
+export function sha512(data: string | Buffer, encoding: BinaryToTextEncoding = 'hex'): string {
   return crypto.createHash('sha512').update(data).digest(encoding);
 }
 

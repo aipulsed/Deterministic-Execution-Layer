@@ -47,13 +47,10 @@ export function isPositiveInt(value: unknown): value is number {
  * @returns Validated pagination object
  */
 export function validatePagination(page: unknown, limit: unknown): { page: number; limit: number } {
-  return validateOrThrow(
-    z.object({
-      page: z.coerce.number().int().min(1).default(1),
-      limit: z.coerce.number().int().min(1).max(100).default(20),
-    }),
-    { page, limit },
-  );
+  return {
+    page: z.coerce.number().int().min(1).default(1).parse(page),
+    limit: z.coerce.number().int().min(1).max(100).default(20).parse(limit),
+  };
 }
 
 /**

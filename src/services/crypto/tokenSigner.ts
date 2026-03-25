@@ -52,7 +52,7 @@ export function configureTokenSigner(config: TokenConfig): void {
  */
 export function signAccessToken(payload: TokenPayload, options: jwt.SignOptions = {}): string {
   return jwt.sign(payload, tokenConfig.secret, {
-    expiresIn: tokenConfig.accessTokenTtl ?? '15m',
+    expiresIn: (tokenConfig.accessTokenTtl ?? '15m') as jwt.SignOptions['expiresIn'],
     issuer: tokenConfig.issuer,
     audience: tokenConfig.audience,
     jwtid: require('crypto').randomUUID(),
@@ -68,7 +68,7 @@ export function signAccessToken(payload: TokenPayload, options: jwt.SignOptions 
  */
 export function signRefreshToken(userId: string, options: jwt.SignOptions = {}): string {
   return jwt.sign({ sub: userId, type: 'refresh' }, tokenConfig.secret, {
-    expiresIn: tokenConfig.refreshTokenTtl ?? '7d',
+    expiresIn: (tokenConfig.refreshTokenTtl ?? '7d') as jwt.SignOptions['expiresIn'],
     issuer: tokenConfig.issuer,
     ...options,
   });
